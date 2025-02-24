@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prótotipo - Game Station</title>
+
+    <style>
+        body{
+            width: 300px;
+            /* margin: auto; */
+            margin: 7% auto;
+            border: 5px solid;
+            border-radius: 10px;
+        }
+
+        header{
+            border-radius: 5px 5px 0 0;
+
+            #topoCelular{
+                height: 20px;
+                background-color: gainsboro;
+            }
+        }
+
+        main{
+            /* padding: 60% 10%; */
+            border: 3px solid;
+            line-height: 50px;
+            border-radius: 6px;
+            border-color: black gainsboro;
+            
+            section[id="topoAplicativo"]{
+                height: 50px;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-image: url("imagens/GameStation-02.jpg");
+            }
+
+            nav{
+                text-align: center;
+                padding: 10px 0 0 0;
+                background: whitesmoke;
+                
+                a{ margin: 15px; border-radius: 5px; border: solid slateblue; }
+            }
+
+            section[class="jogos"]{
+                article{
+                    padding: 10px;
+                    height: 200px;
+
+                    img{ height: 100px; }
+                    div[id=botoes]{ 
+                        display: flex;
+                        justify-content: space-around;
+                    }
+                }
+            }
+        }
+
+        footer{
+            height: 20px;
+            border-radius: 0 0 5px 5px;
+            background-color: gainsboro;
+        }
+    </style>
+    <script>
+        var imagens = ["GameStation.jpg", "GameStation-02.jpg"];
+        var i = -1;
+
+        function avancarImagem(){
+            i++;
+            if(i >= imagens.length) i = 0;
+            document.getElementById("jogos").src = "imagens/" + imagens[i];
+        }
+
+        function voltarImagem(){
+            i--;
+            if(i < 0) i = imagens.length-1;
+            document.getElementById("jogos").src = "imagens/" + imagens[i];
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div id="topoCelular"></div>
+    </header>
+    <main>
+        <section id="topoAplicativo">
+            <!-- <img src="imagens/GameStation-02.jpg" alt="Logotipo" width="100%"> -->
+        </section>
+        <nav>
+            <a href="#"><img src="imagens/icon_restaurante.png" width="12%"></a>
+            <a href="#"><img src="imagens/icon_restaurante.png" width="12%"></a>
+            <a href="#"><img src="imagens/icon_restaurante.png" width="12%"></a>
+            <a href="#"><img src="imagens/icon_restaurante.png" width="12%"></a>
+         </nav>
+         <section class="jogos">
+            <article>
+                <img id="jogos" src="imagens/GameStation.jpg" width="100%">
+                <div id="botoes">
+                    <button onclick="voltarImagem()"> < </button>
+                    <button onclick="avancarImagem()"> > </button>
+                </div>
+            </article>
+         </section>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
