@@ -8,62 +8,115 @@
     <style>
         body{
             width: 300px;
-            /* margin: auto; */
+            height: 600px;
             margin: 7% auto;
-            border: 5px solid;
+            border: 3px solid;
+            padding: 10px 5px;
             border-radius: 10px;
+            background-color: gainsboro;
+
+            > div{
+                border: 3px solid;
+                border-radius: 6px;
+            }
         }
 
         header{
-            border-radius: 5px 5px 0 0;
+            padding: 10px 25px;
+            background: rgba(148, 0, 211, 0.497);
+            background-position: top;
+            background-attachment: fixed;
+            background-image: url("imagens/home.png");
 
-            #topoCelular{
-                height: 20px;
-                background-color: gainsboro;
-            }
+            img{ border-radius: 10px; }
         }
 
         main{
-            /* padding: 60% 10%; */
-            border: 3px solid;
-            line-height: 50px;
-            border-radius: 6px;
-            border-color: black gainsboro;
-            
-            section[id="topoAplicativo"]{
-                height: 50px;
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-image: url("imagens/GameStation-02.jpg");
-            }
+            background-color: rgba(128, 255, 0, 0.886);
 
             nav{
+                line-height: 50px;
                 text-align: center;
                 padding: 10px 0 0 0;
+                border-top: 1px solid;
+                border-bottom: 1px solid;
+                border-color: firebrick;
                 background: whitesmoke;
                 
-                a{ margin: 15px; border-radius: 5px; border: solid slateblue; }
+                a{
+                    margin: 15px;
+                    border-radius: 5px;
+                    border: solid rgba(148, 0, 211, 0.497);
+                }
             }
 
-            section[class="jogos"]{
-                article{
-                    padding: 10px;
-                    height: 200px;
+            section[id="jogos"]{
+                height: 400px;
+                padding: 20px 10%;
 
-                    img{ height: 100px; }
-                    div[id=botoes]{ 
-                        display: flex;
-                        justify-content: space-around;
+                img{
+                    height: 100px;
+                    border-radius: 10px;
+                    margin-bottom: 10px;
+                    border: 1px solid firebrick;
+                }
+            
+                div[id=botoes]{ 
+                    display: flex;
+                    justify-content: space-around;
+
+                    button{
+                        width: 45%;
+                        border: none;
+                        font-weight: 900;
+                        border-radius: 5px;
+                    }
+                    button:hover{
+                        color: white;
+                        background: linear-gradient(25deg, rgba(148, 0, 211, 0.497), rgba(30, 143, 255, 0.756));
+                    }
+                    button:active{
+                        background: linear-gradient(25deg, rgba(128, 255, 0, 0.886), rgba(255, 68, 0, 0.785));
                     }
                 }
             }
         }
 
         footer{
-            height: 20px;
-            border-radius: 0 0 5px 5px;
-            background-color: gainsboro;
+            nav{
+                display: flex;
+                text-align: center;
+                background: whitesmoke;
+                border-top: 1px solid firebrick;
+                
+                background-position: center;
+                background-attachment: fixed;
+                background-image: url("imagens/home.png");
+
+                a{
+                    padding: 5px 15px;
+                    border: 1px solid rgba(148, 0, 211, 0.497);
+
+                    img{
+                        border-radius: 50px;
+                        background-color: white ;}
+                }
+                a[id="page"]{
+                    background: rgba(148, 0, 211, 0.497);
+                }
+                a:hover{
+                    background: rgba(30, 143, 255, 0.756);
+
+                    img{
+                        width: 40%;
+                        border: 1px solid black;
+                    }
+                }
+                a:active{
+                    background: rgba(128, 255, 0, 0.886);
+                    img{ background-color: gainsboro; }
+                }
+            }
         }
     </style>
     <script>
@@ -73,41 +126,46 @@
         function avancarImagem(){
             i++;
             if(i >= imagens.length) i = 0;
-            document.getElementById("jogos").src = "imagens/" + imagens[i];
+            document.getElementById("imgJogos").src = "imagens/" + imagens[i];
         }
 
         function voltarImagem(){
             i--;
             if(i < 0) i = imagens.length-1;
-            document.getElementById("jogos").src = "imagens/" + imagens[i];
+            document.getElementById("imgJogos").src = "imagens/" + imagens[i];
         }
+
+        setInterval(avancarImagem, 5000);
     </script>
 </head>
 <body>
-    <header>
-        <div id="topoCelular"></div>
-    </header>
-    <main>
-        <section id="topoAplicativo">
-            <!-- <img src="imagens/GameStation-02.jpg" alt="Logotipo" width="100%"> -->
-        </section>
-        <nav>
-            <a href="#"><img src="imagens/icon_restaurante.png" width="12%"></a>
-            <a href="#"><img src="imagens/icon_restaurante.png" width="12%"></a>
-            <a href="#"><img src="imagens/icon_restaurante.png" width="12%"></a>
-            <a href="#"><img src="imagens/icon_restaurante.png" width="12%"></a>
-         </nav>
-         <section class="jogos">
-            <article>
-                <img id="jogos" src="imagens/GameStation.jpg" width="100%">
+    <div>
+        <header>
+            <img src="imagens/GameStation-02.jpg" width="25%">
+        </header>
+        <main>
+            <nav>
+                <a href="#"><img src="imagens/icon_restaurante.png" width="12%"></a>
+                <a href="#"><img src="imagens/icon_restaurante.png" width="12%"></a>
+                <a href="#"><img src="imagens/icon_restaurante.png" width="12%"></a>
+                <a href="#"><img src="imagens/icon_restaurante.png" width="12%"></a>
+             </nav>
+             <section id="jogos">
+                <img id="imgJogos" src="imagens/GameStation.jpg" width="100%">
                 <div id="botoes">
                     <button onclick="voltarImagem()"> < </button>
                     <button onclick="avancarImagem()"> > </button>
                 </div>
-            </article>
-         </section>
-    </main>
-    <footer>
-    </footer>
+             </section>
+        </main>
+        <footer>
+            <nav>
+                <a href="#" id="page"><img src="imagens/home-02.png" width="30%"></a>
+                <a href="#"><img src="imagens/home-02.png" width="30%"></a>
+                <a href="#"><img src="imagens/perfil.png" width="30%"></a>
+                <a href="index.html"><img src="imagens/exit.png" width="30%"></a>
+            </nav>
+        </footer>
+    </div>
 </body>
 </html>
