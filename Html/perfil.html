@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prótotipo - Game Station</title>
+
+    <style>
+        body{
+            width: 300px;
+            height: 600px;
+            margin: 7% auto;
+            border: 3px solid;
+            padding: 10px 5px;
+            border-radius: 10px;
+            background-color: gainsboro;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            > div{
+                border: 3px solid;
+                border-radius: 6px;
+            }
+        }
+
+        header{
+            padding: 10px 25px;
+            background: rgba(148, 0, 211, 0.497);
+            background-position: top;
+            background-attachment: fixed;
+            background-image: url("imagens/home.png");
+
+            img{ border-radius: 10px; }
+        }
+
+        main{
+            background-color: rgba(128, 255, 0, 0.886);
+
+            > div{
+                text-align: center;
+                padding: 10px 0 5px 0;
+                background: whitesmoke;
+                border-top: 1px solid firebrick;
+                border-bottom: 1px solid firebrick;
+                
+                img{
+                    border-radius: 50px;
+                    border: solid rgba(148, 0, 211, 0.497);
+                }
+            }
+
+            section[id="info"]{
+                height: 400px;
+                padding: 20px;
+                
+                table{
+                    /* text-align: left; */
+                    border-collapse: collapse;
+                    td{ padding: 5px 0; }
+                    td:first-child{ width: 70%; }
+                }
+            
+                div[id=botoes]{ 
+                    display: flex;
+                    justify-content: space-around;
+
+                    button{
+                        width: 45%;
+                        border: none;
+                        font-weight: 900;
+                        border-radius: 5px;
+                    }
+                    button:hover{
+                        color: white;
+                        background: linear-gradient(25deg, rgba(148, 0, 211, 0.497), rgba(30, 143, 255, 0.756));
+                    }
+                    button:active{
+                        background: linear-gradient(25deg, rgba(128, 255, 0, 0.886), rgba(255, 68, 0, 0.785));
+                    }
+                }
+            }
+        }
+
+        footer{
+            nav{
+                display: flex;
+                text-align: center;
+                background: whitesmoke;
+                border-top: 1px solid firebrick;
+                
+                background-position: center;
+                background-attachment: fixed;
+                background-image: url("imagens/home.png");
+
+                a{
+                    padding: 5px 15px;
+                    border: 1px solid rgba(148, 0, 211, 0.497);
+
+                    img{
+                        border-radius: 50px;
+                        background-color: white ;}
+                }
+                a[id="page"]{
+                    background: rgba(148, 0, 211, 0.497);
+                }
+                a:hover{
+                    background: rgba(30, 143, 255, 0.756);
+
+                    img{
+                        width: 40%;
+                        border: 1px solid black;
+                    }
+                }
+                a:active{
+                    background: rgba(128, 255, 0, 0.886);
+                    img{ background-color: gainsboro; }
+                }
+            }
+        }
+    </style>
+    <script>
+        function desabilitarCampos(desabilitar = true){
+            document.getElementById("b1").disabled = !desabilitar;
+            document.getElementById("b2").disabled = desabilitar;
+            document.getElementById("b3").disabled = desabilitar;
+            document.querySelectorAll("form input").forEach(input => {
+                input.disabled = desabilitar;
+            });
+        }
+
+        function salvar(){
+            // ...
+            desabilitarCampos();
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <header>
+            <img src="imagens/GameStation-02.jpg" width="25%">
+        </header>
+        <main>
+            <div>
+                <img src="imagens/perfil-02.png" width="12%">
+            </div>
+            <section id="info">
+                <form>
+                    <!-- DADOS PESSOAIS -->
+                    <table colcount="2">
+                        <tr>
+                            <th colspan="2">DADOS PESSOAIS:</th>
+                        </tr>
+                        <tr>
+                            <td>CPF:</td>
+                            <td><input type="number" name="cpf" maxlength="11" disabled="true"></td>
+                        </tr>
+                        <tr>
+                            <td>Nome:</td>
+                            <td><input type="text" name="name" maxlength="50" disabled="true"></td>
+                        </tr>
+                        <tr>
+                            <td>Data de nascimento:</td>
+                            <td><input type="date" name="nascimento" disabled="true"></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <!-- ENDERECO -->
+                    <table colcount="2">
+                        <tr>
+                            <th colspan="2">ENDEREÇO:</th>
+                        </tr>
+                        <tr>
+                            <td>Rua:</td>
+                            <td><input type="text" name="rua" maxlength="50" disabled="true"></td>
+                        </tr>
+                        <tr>
+                            <td>Bairro:</td>
+                            <td> <input type="text" name="bairro" maxlength="50" disabled="true"></td>
+                        </tr>
+                        <tr>
+                            <td>Cidade:</td>
+                            <td><input type="text" name="cidade" maxlength="50" disabled="true"></td>
+                        </tr>
+                        <tr>
+                            <td>Estado:</td>
+                            <td><input type="text" name="estado" maxlength="2" disabled="true"></td>
+                        </tr>
+                    </table>
+                </form>
+                <br>
+                <br>
+                <div id="botoes">
+                    <button onclick="desabilitarCampos(false)" id="b1"> EDITAR </button>
+                    <button onclick="salvar()" id="b2" disabled="true"> SALVAR </button>
+                    <button onclick="desabilitarCampos()" id="b3" disabled="true"> CANCELAR </button>
+                </div>
+                <div id="botoes">
+                    <button onclick="" id="b4"> EXCLUIR </button>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <nav>
+                <a href="#"><img src="imagens/home-02.png" width="30%"></a>
+                <a href="#"><img src="imagens/home-02.png" width="30%"></a>
+                <a href="#" id="page"><img src="imagens/perfil.png" width="30%"></a>
+                <a href="index.html"><img src="imagens/exit.png" width="30%"></a>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>
