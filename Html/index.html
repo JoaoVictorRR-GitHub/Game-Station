@@ -8,27 +8,25 @@
     <style>
         body{
             width: 300px;
-            /* margin: auto; */
+            height: 600px;
             margin: 7% auto;
-            border: 5px solid;
+            border: 3px solid;
+            padding: 10px 5px;
             border-radius: 10px;
-        }
-
-        header{
-            height: 20px;
-            border-radius: 5px 5px 0 0;
             background-color: gainsboro;
+
+            > div{
+                border: 3px solid;
+                border-radius: 6px;
+            }
         }
 
         main{
+            height: 240px;
             display: flex;
             padding: 60% 10%;
-            border: 3px solid;
-            line-height: 50px;
-            border-radius: 6px;
             align-items: center;
             flex-direction: column;
-            border-color: black gainsboro;
             background: linear-gradient(45deg, #ff0000ad, #0000ff8d);
         }
 
@@ -57,22 +55,18 @@
         }
         a:hover{ color: burlywood; }
         a:active{ color: #00ff00; }
-
-        footer{
-            height: 20px;
-            border-radius: 0 0 5px 5px;
-            background-color: gainsboro;
-        }
     </style>
 </head>
 <body>
-    <header>
-    </header>
-    <main>
-        <img src="imagens/GameStation.jpg" alt="Logotipo" width="50%">
-        <a href="home.html">CARREGANDO...</a>
-    </main>
-    <footer>
-    </footer>
+    <div>
+        <header>
+        </header>
+        <main>
+            <img src="imagens/GameStation.jpg" alt="Logotipo" width="50%">
+            <a href="home.html">CARREGANDO...</a>
+        </main>
+        <footer>
+        </footer>
+    </div>
 </body>
 </html>
