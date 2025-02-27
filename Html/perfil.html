@@ -49,24 +49,32 @@
             }
 
             section[id="info"]{
-                height: 400px;
+                height: 402px;
                 padding: 20px;
                 
                 table{
-                    /* text-align: left; */
+                    width: 100%;
+                    text-align: left;
                     border-collapse: collapse;
-                    td{ padding: 5px 0; }
+                    th{ padding-bottom: 20px; }
+                    td{
+                        padding: 5px 0;
+                        font-size: 8pt;
+                    }
                     td:first-child{ width: 70%; }
                 }
             
-                div[id=botoes]{ 
+                div[id=botoes]{
                     display: flex;
-                    justify-content: space-around;
+                    justify-content: space-evenly;
 
                     button{
                         width: 45%;
-                        border: none;
+                        margin: 5px;
+                        padding: 3px;
+                        font-size: 8pt;
                         font-weight: 900;
+                        /* border: none; */
                         border-radius: 5px;
                     }
                     button:hover{
@@ -86,10 +94,6 @@
                 text-align: center;
                 background: whitesmoke;
                 border-top: 1px solid firebrick;
-                
-                background-position: center;
-                background-attachment: fixed;
-                background-image: url("imagens/home.png");
 
                 a{
                     padding: 5px 15px;
@@ -97,7 +101,8 @@
 
                     img{
                         border-radius: 50px;
-                        background-color: white ;}
+                        background-color: white;
+                    }
                 }
                 a[id="page"]{
                     background: rgba(148, 0, 211, 0.497);
@@ -143,7 +148,7 @@
                 <img src="imagens/perfil-02.png" width="12%">
             </div>
             <section id="info">
-                <form>
+                <form style="margin-bottom: 10px;">
                     <!-- DADOS PESSOAIS -->
                     <table colcount="2">
                         <tr>
@@ -151,7 +156,7 @@
                         </tr>
                         <tr>
                             <td>CPF:</td>
-                            <td><input type="number" name="cpf" maxlength="11" disabled="true"></td>
+                            <td><input type="text" name="cpf" maxlength="11" disabled="true"></td>
                         </tr>
                         <tr>
                             <td>Nome:</td>
@@ -186,8 +191,6 @@
                         </tr>
                     </table>
                 </form>
-                <br>
-                <br>
                 <div id="botoes">
                     <button onclick="desabilitarCampos(false)" id="b1"> EDITAR </button>
                     <button onclick="salvar()" id="b2" disabled="true"> SALVAR </button>
@@ -201,7 +204,7 @@
         <footer>
             <nav>
                 <a href="home.html"><img src="imagens/home-02.png" width="30%"></a>
-                <a href="#"><img src="imagens/home-02.png" width="30%"></a>
+                <a href="restaurante.html"><img src="imagens/home-02.png" width="30%"></a>
                 <a href="#" id="page"><img src="imagens/perfil.png" width="30%"></a>
                 <a href="index.html"><img src="imagens/exit.png" width="30%"></a>
             </nav>
