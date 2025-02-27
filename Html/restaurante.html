@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prótotipo - Game Station</title>
+
+    <style>
+        body{
+            width: 300px;
+            height: 600px;
+            margin: 7% auto;
+            border: 3px solid;
+            padding: 10px 5px;
+            border-radius: 10px;
+            background-color: gainsboro;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            > div{
+                border: 3px solid;
+                border-radius: 6px;
+            }
+        }
+
+        header{
+            padding: 10px 25px;
+            background: rgba(148, 0, 211, 0.497);
+            background-position: top;
+            background-attachment: fixed;
+            background-image: url("imagens/home.png");
+
+            img{ border-radius: 10px; }
+        }
+
+        main{
+            background-color: rgba(128, 255, 0, 0.886);
+
+            section[id="restaurante"]{
+                text-align: center;
+                padding: 10px 0 5px 0;
+                border-top: 1px solid;
+                border-bottom: 1px solid;
+                border-color: firebrick;
+
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-image: url("imagens/restaurante-01.jpg");
+            }
+
+            section[id="pontuacao"]{
+                height: 390px;
+                padding: 20px 10%;
+
+                img{
+                    height: 100px;
+                    border-radius: 10px;
+                    margin-bottom: 30px;
+                    border: 1px solid firebrick;
+                }
+
+                article{
+                    div{
+                        display: flex;
+                        font-size: 8pt;
+                        margin-top: -10px;
+                        font-weight: bold;
+                        justify-content: space-between;
+                    }
+
+                    meter {
+                        width: 100%;
+                        height: 50px;
+                    }
+
+                    /* Normal */
+                    meter::-webkit-meter-optimum-value {  /*  meter::-webkit-meter-optimum-value */
+                        background: no-repeat center #ff9800;
+                        background-image: url("imagens/restaurante-01-crabicon.png");
+                        background-size: cover;
+                    }
+                    meter::-webkit-meter-bar { background: #f44336; }
+                    #m2::-webkit-meter-optimum-value{ background-image: url("imagens/restaurante-01-crabicon.png"); }
+                    #m3::-webkit-meter-optimum-value{ background-image: url("imagens/restaurante-01.jpg"); }
+                }
+            }
+        }
+
+        footer{
+            nav{
+                display: flex;
+                text-align: center;
+                background: whitesmoke;
+                border-top: 1px solid firebrick;
+
+                a{
+                    padding: 5px 15px;
+                    border: 1px solid rgba(148, 0, 211, 0.497);
+
+                    img{
+                        border-radius: 50px;
+                        background-color: white;
+                    }
+                }
+                a[id="page"]{
+                    background: rgba(148, 0, 211, 0.497);
+                }
+                a:hover{
+                    background: rgba(30, 143, 255, 0.756);
+
+                    img{
+                        width: 40%;
+                        border: 1px solid black;
+                    }
+                }
+                a:active{
+                    background: rgba(128, 255, 0, 0.886);
+                    img{ background-color: gainsboro; }
+                }
+            }
+        }
+    </style>
+    <script>
+        var imagens = ["restaurante-01-comida.jpg", "jogo-01.png", "restaurante-01-mapa.png", "GameStation-02.jpg"];
+        var i = -1;
+
+        function avancarImagem(){
+            i++;
+            if(i >= imagens.length) i = 0;
+            document.getElementById("imgJogos").src = "imagens/" + imagens[i];
+        }
+
+        // function voltarImagem(){
+        //     i--;
+        //     if(i < 0) i = imagens.length-1;
+        //     document.getElementById("imgJogos").src = "imagens/" + imagens[i];
+        // }
+
+        setInterval(avancarImagem, 3500);
+    </script>
+</head>
+<body>
+    <div>
+        <header>
+            <img src="imagens/GameStation-02.jpg" width="25%">
+        </header>
+        <main>
+            <section id="restaurante">
+                <img src="imagens/logo-restaurante-01.png" width="25%">
+            </section>
+            <section id="pontuacao">
+                <div>
+                    <img id="imgJogos" src="imagens/GameStation.jpg" width="100%">
+                </div>
+                <article>
+                    <meter value="0.7" id="m1"></meter>
+                    <div>
+                        <span>GAME: X</span>
+                        <span>70%</span>
+                    </div>
+                </article>
+                <article>
+                    <meter value="0.3" id="m2"></meter>
+                    <div>
+                        <span>GAME: Y</span>
+                        <span>30%</span>
+                    </div>
+                </article>
+                <article>
+                    <meter value="1.0" id="m3"></meter>
+                    <div>
+                        <span>GAME: Z</span>
+                        <span>100%</span>
+                    </div>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <nav>
+                <a href="home.html"><img src="imagens/home-02.png" width="30%"></a>
+                <a href="#" id="page"><img src="imagens/home-02.png" width="30%"></a>
+                <a href="perfil.html"><img src="imagens/perfil.png" width="30%"></a>
+                <a href="index.html"><img src="imagens/exit.png" width="30%"></a>
+            </nav>
+        </footer>
+    </div>
+</body>
+</html>
