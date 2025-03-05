@@ -1,65 +1,71 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prótotipo - Game Station</title>
 
     <style>
-        body{
-            width: 300px;
-            height: 600px;
-            margin: 7% auto;
-            border: 3px solid;
+        body {
+            display: flex;
+            flex-direction: column;
             padding: 10px 5px;
-            border-radius: 10px;
-            background-color: gainsboro;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-            > div{
-                border: 3px solid;
-                border-radius: 6px;
+            div.celular {
+                width: 412px;
+                height: 915px;
+                overflow: hidden;
+                border: 10px solid;
+                border-radius: 30px;
+                background-color: gainsboro;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
             }
         }
 
         header{
+            height: 65px;
             padding: 10px 25px;
-            background: rgba(148, 0, 211, 0.497);
-            background-position: top;
-            background-attachment: fixed;
-            background-image: url("imagens/home.png");
-
-            img{ border-radius: 10px; }
+            /* background: rgb(59,16,105); */
+            background-size: 90%;
+            background-position: center;
+            background-image: url("imagens/Logotipo-02.jpg");
         }
 
         main{
-            background-color: rgba(128, 255, 0, 0.886);
+            /* background-color: rgb(113,38,156); */
+            background-image: url("imagens/Fundo.jpg");
 
             nav{
                 line-height: 50px;
-                text-align: center;
                 padding: 10px 0 0 0;
-                border-top: 1px solid;
-                border-bottom: 1px solid;
-                border-color: firebrick;
                 background: whitesmoke;
+                border-top: 1px solid  rgb(59,16,105);
+                border-bottom: 1px solid  rgb(59,16,105);
                 
                 a{
                     margin: 15px;
                     border-radius: 5px;
-                    border: solid rgba(148, 0, 211, 0.497);
+                    border: solid rgb(59,16,105);
+
+                    img{  width: 12%;  }
                 }
                 a:hover img{ width: 10%; }
             }
 
             section[id="jogos"]{
-                height: 400px;
+                height: 672px;
                 padding: 20px 10%;
 
                 img{
-                    height: 100px;
+                    height: 30%;
                     border-radius: 10px;
                     margin-bottom: 10px;
-                    border: 1px solid firebrick;
+                    border: 1px solid rgb(59,16,105);
                 }
             
                 div[id=botoes]{ 
@@ -69,15 +75,20 @@
                     button{
                         width: 45%;
                         border: none;
+                        padding: 3px;
+                        font-size: 12pt;
                         font-weight: 900;
                         border-radius: 5px;
                     }
                     button:hover{
                         color: white;
-                        background: linear-gradient(25deg, rgba(148, 0, 211, 0.497), rgba(30, 143, 255, 0.756));
+                        background: linear-gradient(25deg, rgba(148, 0, 211, 0.497), rgb(35,151,248));
                     }
-                    button:active{
-                        background: linear-gradient(25deg, rgba(128, 255, 0, 0.886), rgba(255, 68, 0, 0.785));
+                    button:nth-child(1):active{
+                        background: linear-gradient(335deg, rgb(35,151,248), rgb(1,142,66));
+                    }
+                    button:nth-child(2):active{
+                        background: linear-gradient(25deg, rgb(35,151,248), rgb(1,142,66));
                     }
                 }
             }
@@ -86,39 +97,39 @@
         footer{
             nav{
                 display: flex;
-                text-align: center;
                 background: whitesmoke;
-                border-top: 1px solid firebrick;
+                border-top: 1px solid rgb(59,16,105);
 
                 a{
-                    padding: 5px 15px;
-                    border: 1px solid rgba(148, 0, 211, 0.497);
+                    padding: 5px;
+                    border: 1px solid rgb(59,16,105);
 
                     img{
+                        width: 30%;
                         border-radius: 50px;
                         background-color: white;
                     }
                 }
                 a[id="page"]{
-                    background: rgba(148, 0, 211, 0.497);
+                    background: rgb(59,16,105);
                 }
                 a:hover{
-                    background: rgba(30, 143, 255, 0.756);
+                    background: rgb(35,151,248);
 
                     img{
-                        width: 40%;
+                        width: 35%;
                         border: 1px solid black;
                     }
                 }
                 a:active{
-                    background: rgba(128, 255, 0, 0.886);
+                    background: rgb(1,142,66);
                     img{ background-color: gainsboro; }
                 }
             }
         }
     </style>
-    <script>
-        var imagens = ["GameStation.jpg", "GameStation-02.jpg"];
+    <script type="text/javascript">
+        var imagens = ["GameStation.jpg", "Logotipo-02.jpg"];
         var i = -1;
 
         function avancarImagem(){
@@ -133,23 +144,22 @@
             document.getElementById("imgJogos").src = "imagens/" + imagens[i];
         }
 
-        setInterval(avancarImagem, 5000);
+        setInterval(avancarImagem, 15000);
     </script>
 </head>
 <body>
-    <div>
+    <div class="celular">
         <header>
-            <img src="imagens/GameStation-02.jpg" width="25%">
         </header>
         <main>
             <nav>
-                <a href="restaurante.html"><img src="imagens/icon_restaurante.png" width="12%"></a>
-                <a href="restaurante.html"><img src="imagens/icon_restaurante.png" width="12%"></a>
-                <a href="restaurante.html"><img src="imagens/icon_restaurante.png" width="12%"></a>
-                <a href="restaurante.html"><img src="imagens/icon_restaurante.png" width="12%"></a>
+                <a href="restaurante.html"><img src="imagens/logo-restaurante-01.png" alt="Icon1"></a>
+                <a href="restaurante.html"><img src="imagens/icon_restaurante.png" alt="Icon2"></a>
+                <a href="restaurante.html"><img src="imagens/icon_restaurante.png" alt="Icon3"></a>
+                <a href="restaurante.html"><img src="imagens/icon_restaurante.png" alt="Icon4"></a>
              </nav>
              <section id="jogos">
-                <img id="imgJogos" src="imagens/GameStation.jpg" width="100%">
+                <img id="imgJogos" src="imagens/Logotipo-02.jpg" width="100%" alt="Images">
                 <div id="botoes">
                     <button onclick="voltarImagem()"> &lt; </button>
                     <button onclick="avancarImagem()"> &gt; </button>
@@ -158,10 +168,11 @@
         </main>
         <footer>
             <nav>
-                <a href="#" id="page"><img src="imagens/home-02.png" width="30%"></a>
-                <a href="restaurante.html"><img src="imagens/home-02.png" width="30%"></a>
-                <a href="perfil.html"><img src="imagens/perfil.png" width="30%"></a>
-                <a href="index.html"><img src="imagens/exit.png" width="30%"></a>
+                <a href="#" id="page">      <img src="imagens/home-02.png" alt="IconF1">    </a>
+                <a href="restaurante.html"> <img src="imagens/progresso.png" alt="IconF2">  </a>
+                <a href="ranking.html">     <img src="imagens/ranking-01.png" alt="IconF3"> </a>
+                <a href="perfil.html">      <img src="imagens/perfil.png" alt="IconF4">     </a>
+                <a href="index.html">       <img src="imagens/exit.png" alt="IconF5">       </a>
             </nav>
         </footer>
     </div>

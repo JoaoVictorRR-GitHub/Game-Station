@@ -6,84 +6,91 @@
     <title>Prótotipo - Game Station</title>
 
     <style>
-        body{
-            width: 300px;
-            height: 600px;
-            margin: 7% auto;
-            border: 3px solid;
+        body {
+            display: flex;
+            flex-direction: column;
             padding: 10px 5px;
-            border-radius: 10px;
-            background-color: gainsboro;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-            > div{
-                border: 3px solid;
-                border-radius: 6px;
+            div.celular {
+                width: 412px;
+                height: 915px;
+                overflow: hidden;
+                border: 10px solid;
+                border-radius: 30px;
+                background-color: gainsboro;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
             }
         }
 
         header{
+            height: 65px;
             padding: 10px 25px;
-            background: rgba(148, 0, 211, 0.497);
-            background-position: top;
-            background-attachment: fixed;
-            background-image: url("imagens/home.png");
+            /* background: rgb(59,16,105); */
+            background-size: 90%;
+            background-position: center;
+            background-image: url("imagens/Logotipo-02.jpg");
+        }
 
-            img{ border-radius: 10px; }
+        button{
+            width: 45%;
+            margin: 5px;
+            padding: 3px;
+            font-size: 8pt;
+            font-weight: 900;
+            /* border: none; */
+            border-radius: 5px;
+        }
+        button:hover:enabled{
+            color: white;
+            background: linear-gradient(25deg, rgba(148, 0, 211, 0.497), rgb(35,151,248));
+        }
+        button:active:enabled{
+            background: linear-gradient(25deg, rgb(35,151,248), rgb(1,142,66));
         }
 
         main{
-            background-color: rgba(128, 255, 0, 0.886);
+            /* background-color: rgb(113,38,156); */
+            background-image: url("imagens/Fundo.jpg");
 
             > div{
-                text-align: center;
                 padding: 10px 0 5px 0;
                 background: whitesmoke;
-                border-top: 1px solid firebrick;
-                border-bottom: 1px solid firebrick;
+                border-top: 1px solid rgb(59,16,105);
+                border-bottom: 1px solid rgb(59,16,105);
                 
                 img{
                     border-radius: 50px;
-                    border: solid rgba(148, 0, 211, 0.497);
+                    border: solid rgba(59,16,105, 0.497);   /* rgba(148, 0, 211, 0.497); */
                 }
             }
 
             section[id="info"]{
-                height: 402px;
-                padding: 20px;
+                display: flex;
+                height: 677px;
+                padding: 20px 5%;
+                flex-direction: column;
+                justify-content: space-around;
                 
                 table{
-                    width: 100%;
+                    /* width: 100%; */
                     text-align: left;
                     border-collapse: collapse;
+                    
                     th{ padding-bottom: 20px; }
-                    td{
-                        padding: 5px 0;
-                        font-size: 8pt;
-                    }
+                    td{ padding: 5px 0; }
                     td:first-child{ width: 70%; }
+                    input{ border-radius: 5px; }
+                    input:focus{ outline: 1px solid rgb(35,151,248); }
                 }
             
-                div[id=botoes]{
+                section[id=botoes] > div{
                     display: flex;
                     justify-content: space-evenly;
-
-                    button{
-                        width: 45%;
-                        margin: 5px;
-                        padding: 3px;
-                        font-size: 8pt;
-                        font-weight: 900;
-                        /* border: none; */
-                        border-radius: 5px;
-                    }
-                    button:hover{
-                        color: white;
-                        background: linear-gradient(25deg, rgba(148, 0, 211, 0.497), rgba(30, 143, 255, 0.756));
-                    }
-                    button:active{
-                        background: linear-gradient(25deg, rgba(128, 255, 0, 0.886), rgba(255, 68, 0, 0.785));
-                    }
                 }
             }
         }
@@ -91,38 +98,92 @@
         footer{
             nav{
                 display: flex;
-                text-align: center;
                 background: whitesmoke;
-                border-top: 1px solid firebrick;
+                border-top: 1px solid rgb(59,16,105);
 
                 a{
-                    padding: 5px 15px;
-                    border: 1px solid rgba(148, 0, 211, 0.497);
+                    padding: 5px;
+                    border: 1px solid rgb(59,16,105);
 
                     img{
+                        width: 30%;
                         border-radius: 50px;
                         background-color: white;
                     }
                 }
                 a[id="page"]{
-                    background: rgba(148, 0, 211, 0.497);
+                    background: rgb(59,16,105);
                 }
                 a:hover{
-                    background: rgba(30, 143, 255, 0.756);
+                    background: rgb(35,151,248);
 
                     img{
-                        width: 40%;
+                        width: 35%;
                         border: 1px solid black;
                     }
                 }
                 a:active{
-                    background: rgba(128, 255, 0, 0.886);
+                    background: rgb(1,142,66);
                     img{ background-color: gainsboro; }
                 }
             }
         }
+
+        aside{
+            width: 250px;
+            height: 100px;
+            top: 45%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);   /* Ajusta para centralizar. */
+            border-radius: 15px;
+            border: 2px solid rgb(59,16,105);
+            background: rgb(35,151,248);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("imagens/perfil-02.png");
+            visibility: hidden;
+            z-index: 1;
+
+            p{ margin: 16px; }
+        }
     </style>
     <script>
+        class Info {
+            constructor(){ this.dados = {}; }
+
+            setDados(CPF, Nome, Nascimento, Rua, Bairro, Cidade, Estado) {
+                this.dados["CPF"]         = CPF;
+                this.dados["Nome"]        = Nome;
+                this.dados["Nascimento"]  = Nascimento;
+                this.dados["Rua"]         = Rua;
+                this.dados["Bairro"]      = Bairro;
+                this.dados["Cidade"]      = Cidade;
+                this.dados["Estado"]      = Estado;
+            }
+
+            setPropriedade(Propriedade, Valor) {
+                this.dados[Propriedade] = Valor;
+            }
+
+            getPropriedade(Propriedade) {
+                return this.dados[Propriedade];
+            }
+        }
+        DadosUser = new Info();
+        DadosUser.setDados("000.000.000-00", "User1", "2005-10-05", "Logradouro A", "Bairro A", "Cidade A", "ES");
+
+        // Funcao para cancelar as alteracoes nos dados.
+        function cancelar(){
+            document.querySelectorAll("form input").forEach(input => {
+                input.value = DadosUser.getPropriedade(input.name);
+            });
+            desabilitarCampos();
+        }
+
+
+        // Funcao para desabilitar os botoes e os campos de input.
         function desabilitarCampos(desabilitar = true){
             document.getElementById("b1").disabled = !desabilitar;
             document.getElementById("b2").disabled = desabilitar;
@@ -132,20 +193,47 @@
             });
         }
 
-        function salvar(){
-            // ...
-            desabilitarCampos();
+        // Funcao para salvar os dados.
+        async function salvar(){
+            // Guarda os dados.
+            document.querySelectorAll("form input").forEach(input => {
+                DadosUser.setPropriedade(input.name, input.value);
+            });
+            exibirMensagem_Aside(true);     // Mostra o aside de mensagem.
+            await esperarCliqueNoBotao();   // Aguarda o usuario clicar no botao "OK".
+            desabilitarCampos();            // So continua apos o clique.
+        }
+
+        // Funcao para exibir uma mensagem para o usuario.
+        function exibirMensagem_Aside(Habilitar = true, event){
+            document.getElementsByTagName("main")[0].style.pointerEvents    = Habilitar ? "none" : "";          /* Bloqueia/Desbloqueia cliques e interacoes na main. */
+            document.getElementsByTagName("main")[0].style.opacity          = Habilitar ? "0.6" : "";           /* Desfoca/Foca o fundo na main. */
+            document.getElementsByTagName("footer")[0].style.pointerEvents  = Habilitar ? "none" : "";          /* Bloqueia/Desbloqueia cliques e interacoes no footer. */
+            document.getElementById("mensagem").style.visibility            = Habilitar ? "visible" : "hidden"; /* Habilita/Desabilita o aside da mensagem. */
+        }
+
+        // Funcao para aguardar o click no botao do aside de mensagem.
+        function esperarCliqueNoBotao() {
+            return new Promise(resolve => {
+                document.getElementById("mensagem").getElementsByTagName("button")[0].addEventListener("click", () => {
+                    exibirMensagem_Aside(false);    // Esconde o aside.
+                    resolve();                      // Libera o fluxo de execucao.
+                }, { once: true });                 // Garante que o evento so seja acionado uma vez.
+            });
         }
     </script>
 </head>
 <body>
-    <div>
+    <div class="celular">
         <header>
-            <img src="imagens/GameStation-02.jpg" width="25%">
         </header>
+        <aside id="mensagem">
+            <p>Informações guardadadas com sucesso.</p>
+            <button onclick="exibirMensagem_Aside(false)"> OK </button>
+        </aside>
         <main>
             <div>
-                <img src="imagens/perfil-02.png" width="12%">
+                <img src="imagens/perfil-02.png" width="12%" alt="Logotipo">
             </div>
             <section id="info">
                 <form style="margin-bottom: 10px;">
@@ -156,15 +244,15 @@
                         </tr>
                         <tr>
                             <td>CPF:</td>
-                            <td><input type="text" name="cpf" maxlength="11" disabled="true"></td>
+                            <td><input type="text" name="CPF" maxlength="11" disabled="true" value="000.000.000-00"></td>
                         </tr>
                         <tr>
                             <td>Nome:</td>
-                            <td><input type="text" name="name" maxlength="50" disabled="true"></td>
+                            <td><input type="text" name="Nome" maxlength="50" disabled="true" value="User1"></td>
                         </tr>
                         <tr>
                             <td>Data de nascimento:</td>
-                            <td><input type="date" name="nascimento" disabled="true"></td>
+                            <td><input type="date" name="Nascimento" disabled="true" value="2005-05-10"></td>
                         </tr>
                     </table>
                     <br>
@@ -175,38 +263,41 @@
                         </tr>
                         <tr>
                             <td>Rua:</td>
-                            <td><input type="text" name="rua" maxlength="50" disabled="true"></td>
+                            <td><input type="text" name="Rua" maxlength="50" disabled="true" value="Logradouro A"></td>
                         </tr>
                         <tr>
                             <td>Bairro:</td>
-                            <td> <input type="text" name="bairro" maxlength="50" disabled="true"></td>
+                            <td> <input type="text" name="Bairro" maxlength="50" disabled="true" value="Bairro A"></td>
                         </tr>
                         <tr>
                             <td>Cidade:</td>
-                            <td><input type="text" name="cidade" maxlength="50" disabled="true"></td>
+                            <td><input type="text" name="Cidade" maxlength="50" disabled="true" value="Cidade A"></td>
                         </tr>
                         <tr>
                             <td>Estado:</td>
-                            <td><input type="text" name="estado" maxlength="2" disabled="true"></td>
+                            <td><input type="text" name="Estado" maxlength="2" disabled="true" value="ES"></td>
                         </tr>
                     </table>
                 </form>
-                <div id="botoes">
-                    <button onclick="desabilitarCampos(false)" id="b1"> EDITAR </button>
-                    <button onclick="salvar()" id="b2" disabled="true"> SALVAR </button>
-                    <button onclick="desabilitarCampos()" id="b3" disabled="true"> CANCELAR </button>
-                </div>
-                <div id="botoes">
-                    <button onclick="" id="b4"> EXCLUIR </button>
-                </div>
+                <section id="botoes">
+                    <div>
+                        <button onclick="desabilitarCampos(false)" id="b1"> EDITAR </button>
+                        <button onclick="salvar()" id="b2" disabled="true"> SALVAR </button>
+                        <button onclick="cancelar()" id="b3" disabled="true"> CANCELAR </button>
+                    </div>
+                    <div>
+                        <button onclick="" id="b4"> EXCLUIR </button>
+                    </div>
+                </section>
             </section>
         </main>
         <footer>
             <nav>
-                <a href="home.html"><img src="imagens/home-02.png" width="30%"></a>
-                <a href="restaurante.html"><img src="imagens/home-02.png" width="30%"></a>
-                <a href="#" id="page"><img src="imagens/perfil.png" width="30%"></a>
-                <a href="index.html"><img src="imagens/exit.png" width="30%"></a>
+                <a href="home.html">        <img src="imagens/home-02.png" alt="IconF1">    </a>
+                <a href="restaurante.html"> <img src="imagens/progresso.png" alt="IconF2">  </a>
+                <a href="ranking.html">     <img src="imagens/ranking-01.png" alt="IconF3"> </a>
+                <a href="#" id="page">      <img src="imagens/perfil.png" alt="IconF4">     </a>
+                <a href="index.html">       <img src="imagens/exit.png" alt="IconF5">       </a>
             </nav>
         </footer>
     </div>

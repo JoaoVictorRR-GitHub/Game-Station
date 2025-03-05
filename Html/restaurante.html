@@ -6,41 +6,44 @@
     <title>Prótotipo - Game Station</title>
 
     <style>
-        body{
-            width: 300px;
-            height: 600px;
-            margin: 7% auto;
-            border: 3px solid;
+        body {
+            display: flex;
+            flex-direction: column;
             padding: 10px 5px;
-            border-radius: 10px;
-            background-color: gainsboro;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-            > div{
-                border: 3px solid;
-                border-radius: 6px;
+            div.celular {
+                width: 412px;
+                height: 915px;
+                overflow: hidden;
+                border: 10px solid;
+                border-radius: 30px;
+                background-color: gainsboro;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
             }
         }
 
         header{
+            height: 65px;
             padding: 10px 25px;
-            background: rgba(148, 0, 211, 0.497);
-            background-position: top;
-            background-attachment: fixed;
-            background-image: url("imagens/home.png");
-
-            img{ border-radius: 10px; }
+            /* background: rgb(59,16,105); */
+            background-size: 90%;
+            background-position: center;
+            background-image: url("imagens/Logotipo-02.jpg");
         }
 
         main{
-            background-color: rgba(128, 255, 0, 0.886);
+            /* background-color: rgb(113,38,156); */
+            background-image: url("imagens/Fundo.jpg");
 
             section[id="restaurante"]{
-                text-align: center;
                 padding: 10px 0 5px 0;
-                border-top: 1px solid;
-                border-bottom: 1px solid;
-                border-color: firebrick;
+                border-top: 1px solid rgb(59,16,105);
+                border-bottom: 1px solid rgb(59,16,105);
 
                 background-size: cover;
                 background-position: center;
@@ -49,14 +52,14 @@
             }
 
             section[id="pontuacao"]{
-                height: 386px;
+                height: 652px;
                 padding: 20px 10%;
 
                 img{
-                    height: 100px;
+                    height: 200px;
                     border-radius: 10px;
                     margin-bottom: 30px;
-                    border: 1px solid firebrick;
+                    border: 1px solid rgb(59,16,105);
                 }
 
                 article{
@@ -68,18 +71,18 @@
                         justify-content: space-between;
                     }
 
-                    meter {
+                    meter{
                         width: 100%;
-                        height: 50px;
+                        height: 70px;
                     }
 
                     /* Normal */
                     meter::-webkit-meter-optimum-value {  /*  meter::-webkit-meter-optimum-value */
-                        background: no-repeat center #ff9800;
+                        background: no-repeat center rgb(239,77,22);    /* #ff9800; */
                         background-image: url("imagens/restaurante-01-crabicon.png");
                         background-size: cover;
                     }
-                    meter::-webkit-meter-bar { background: #f44336; }
+                    meter::-webkit-meter-bar { background: rgb(215,58,0);   /* #f44336; */ }
                     #m2::-webkit-meter-optimum-value{ background-image: url("imagens/restaurante-01-crabicon.png"); }
                     #m3::-webkit-meter-optimum-value{ background-image: url("imagens/restaurante-01.jpg"); }
                 }
@@ -89,39 +92,39 @@
         footer{
             nav{
                 display: flex;
-                text-align: center;
                 background: whitesmoke;
-                border-top: 1px solid firebrick;
+                border-top: 1px solid rgb(59,16,105);
 
                 a{
-                    padding: 5px 15px;
-                    border: 1px solid rgba(148, 0, 211, 0.497);
+                    padding: 5px;
+                    border: 1px solid rgb(59,16,105);
 
                     img{
+                        width: 30%;
                         border-radius: 50px;
                         background-color: white;
                     }
                 }
                 a[id="page"]{
-                    background: rgba(148, 0, 211, 0.497);
+                    background: rgb(59,16,105);
                 }
                 a:hover{
-                    background: rgba(30, 143, 255, 0.756);
+                    background: rgb(35,151,248);
 
                     img{
-                        width: 40%;
+                        width: 35%;
                         border: 1px solid black;
                     }
                 }
                 a:active{
-                    background: rgba(128, 255, 0, 0.886);
+                    background: rgb(1,142,66);
                     img{ background-color: gainsboro; }
                 }
             }
         }
     </style>
     <script>
-        var imagens = ["restaurante-01-comida.jpg", "jogo-01.png", "restaurante-01-mapa.png", "GameStation-02.jpg"];
+        var imagens = ["restaurante-01-carrossel-img01.jpg", "restaurante-01-carrossel-img02.jpg", "restaurante-01-carrossel-img03.jpg", "restaurante-01-carrossel-img04.jpg"];
         var i = -1;
 
         function avancarImagem(){
@@ -130,27 +133,20 @@
             document.getElementById("imgJogos").src = "imagens/" + imagens[i];
         }
 
-        // function voltarImagem(){
-        //     i--;
-        //     if(i < 0) i = imagens.length-1;
-        //     document.getElementById("imgJogos").src = "imagens/" + imagens[i];
-        // }
-
-        setInterval(avancarImagem, 3500);
+        setInterval(avancarImagem, 5000);
     </script>
 </head>
 <body>
-    <div>
+    <div class="celular">
         <header>
-            <img src="imagens/GameStation-02.jpg" width="25%">
         </header>
         <main>
             <section id="restaurante">
-                <img src="imagens/logo-restaurante-01.png" width="25%">
+                <img src="imagens/logo-restaurante-01.png" width="25%" alt="Logotipo">
             </section>
             <section id="pontuacao">
                 <div>
-                    <img id="imgJogos" src="imagens/GameStation.jpg" width="100%">
+                    <img id="imgJogos" src="imagens/Logotipo-02.jpg" width="100%" alt="ImgsRestaurante">
                 </div>
                 <article>
                     <meter value="0.7" id="m1"></meter>
@@ -177,10 +173,11 @@
         </main>
         <footer>
             <nav>
-                <a href="home.html"><img src="imagens/home-02.png" width="30%"></a>
-                <a href="#" id="page"><img src="imagens/home-02.png" width="30%"></a>
-                <a href="perfil.html"><img src="imagens/perfil.png" width="30%"></a>
-                <a href="index.html"><img src="imagens/exit.png" width="30%"></a>
+                <a href="home.html">    <img src="imagens/home-02.png" alt="IconF1">    </a>
+                <a href="#" id="page">  <img src="imagens/progresso.png" alt="IconF2">  </a>
+                <a href="ranking.html"> <img src="imagens/ranking-01.png" alt="IconF3"> </a>
+                <a href="perfil.html">  <img src="imagens/perfil.png" alt="IconF4">     </a>
+                <a href="index.html">   <img src="imagens/exit.png" alt="IconF5">       </a>
             </nav>
         </footer>
     </div>
