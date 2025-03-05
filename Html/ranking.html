@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prótotipo - Game Station</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 5px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            div.celular {
+                width: 412px;
+                height: 915px;
+                overflow: hidden;
+                border: 10px solid;
+                border-radius: 30px;
+                background-color: gainsboro;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        header{
+            height: 65px;
+            padding: 10px 25px;
+            /* background: rgb(59,16,105); */
+            background-size: 90%;
+            background-position: center;
+            background-image: url("imagens/Logotipo-02.jpg");
+        }
+
+        main{
+            /* background-color: rgb(113,38,156); */
+            background-image: url("imagens/Fundo.jpg");
+
+            > div{
+                padding: 10px 0 5px 0;
+                background: whitesmoke;
+                border-top: 1px solid rgb(59,16,105);
+                border-bottom: 1px solid rgb(59,16,105);
+                
+                img{
+                    padding: 5px;
+                    border-radius: 5px;
+                    border: solid rgba(59,16,105, 0.497);   /* rgba(148, 0, 211, 0.497); */
+                }
+            }
+
+            section[id="ranking"]{
+                height: 707px;
+                > *:not(div){ padding: 20px 10%; }
+
+                div:first-child{
+                    display: flex;
+
+                    button{
+                        width: 50%;
+                        padding: 5px;
+                        font-size: 8pt;
+                        font-weight: 900;
+                        border-radius: 0px 0px 10px 10px;
+                    }
+                    button[class="tabAtivo"]{
+                        color: white;
+                        background: linear-gradient(25deg, rgb(1,142,66), rgb(35,151,248));
+                    }
+                    button:hover{
+                        color: white;
+                        background: linear-gradient(25deg, rgba(148, 0, 211, 0.497), rgb(35,151,248));
+                    }
+                    button:active{
+                        background: linear-gradient(25deg, rgb(35,151,248), rgb(1,142,66));
+                    }
+                }
+
+                article{
+                    div{
+                        display: flex;
+                        margin: 15px 0;
+                        justify-content: space-between;
+                    }
+                    p:nth-child(1), p:nth-child(3){ font-weight: bold; }
+                    p{ font-size: 8pt; }
+                    img{ width: 10%; }
+                }
+                article[id="Titulos"] p {
+                    font-weight: bold;
+                }
+                article[id="rankingGlobal"]{
+                    display: none;
+                }
+            }
+        }
+
+        footer{
+            nav{
+                display: flex;
+                background: whitesmoke;
+                border-top: 1px solid rgb(59,16,105);
+
+                a{
+                    padding: 5px;
+                    border: 1px solid rgb(59,16,105);
+
+                    img{
+                        width: 30%;
+                        border-radius: 50px;
+                        background-color: white;
+                    }
+                }
+                a[id="page"]{
+                    background: rgb(59,16,105);
+                }
+                a:hover{
+                    background: rgb(35,151,248);
+
+                    img{
+                        width: 35%;
+                        border: 1px solid black;
+                    }
+                }
+                a:active{
+                    background: rgb(1,142,66);
+                    img{ background-color: gainsboro; }
+                }
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="celular">
+        <header>
+        </header>
+        <main>
+            <div>
+                <img src="imagens/ranking-01.png" width="12%" alt="Logotipo">
+            </div>
+            <section id="ranking">
+                <div>
+                    <button onclick="alternarTab(0)" class="">RANKING LOCAL</button>
+                    <button onclick="alternarTab(1)" class="">RANKING GLOBAL</button>
+                </div>
+                <article id="Titulos">
+                    <div>
+                        <p>RANK</p>
+                        <p>RESTAURANTE</p>
+                        <p>PONTUAÇÃO</p>
+                        <img src="imagens/progresso.png" alt="">
+                    </div>
+                </article>
+                <article id="rankingLocal">
+                    
+                </article>
+                <article id="rankingGlobal">
+
+                </article>
+            </section>
+        </main>
+        <footer>
+            <nav>
+                <a href="home.html">        <img src="imagens/home-02.png" alt="IconF1">    </a>
+                <a href="restaurante.html"> <img src="imagens/progresso.png" alt="IconF2">  </a>
+                <a href="#" id="page">      <img src="imagens/ranking-01.png" alt="IconF3"> </a>
+                <a href="perfil.html">      <img src="imagens/perfil.png" alt="IconF4">     </a>
+                <a href="index.html">       <img src="imagens/exit.png" alt="IconF5">       </a>
+            </nav>
+        </footer>
+    </div>
+    <script>
+        class RankingList{
+            constructor(){
+                this.ListaLocal = [];
+                this.ListaGlobal = [];
+            }
+
+            adicionarRankingLocal(Rank, Local, Pontuacao, Icone = null){
+                this.ListaLocal.push({
+                    "rank": Rank,
+                    "local": Local,
+                    "pontos": Pontuacao,
+                    "icone": Icone ?? "imagens/perfil.png",
+                });
+            }
+
+            adicionarRankingGlobal(Pontuacao, Local, Temporada, Icone = null){
+                this.ListaGlobal.push({
+                    "pontos": Pontuacao,
+                    "local": Local,
+                    "temporada": Temporada,
+                    "icone": Icone ?? "imagens/perfil.png",
+                });
+            }
+
+            exibirRankingLocal(){
+                let tabRanking = document.getElementById("rankingLocal");
+                let rankingHTML = "";
+
+                this.ListaLocal.forEach(Player => {
+                    rankingHTML += "<div>";
+                    rankingHTML += "<p>" +Player.rank +"º</p>";
+                    rankingHTML += "<p>" +Player.local +"</p>";
+                    rankingHTML += "<p>" +Player.pontos +"</p>";
+                    rankingHTML += "<img src=\"" +Player.icone +"\">";
+                    rankingHTML += "</div>";
+                });
+
+                tabRanking.innerHTML = rankingHTML;
+                document.getElementById("Titulos").querySelectorAll("p")[0].innerText = "RANK";
+                document.getElementById("Titulos").querySelectorAll("p")[2].innerText = "PONTUAÇÃO";
+            }
+
+            exibirRankingGlobal(){
+                let tabRanking = document.getElementById("rankingGlobal");
+                let rankingHTML = "";
+
+                this.ListaGlobal.forEach(Temporada => {
+                    rankingHTML += "<div>";
+                    rankingHTML += "<p>" +Temporada.pontos +"</p>";
+                    rankingHTML += "<p>" +Temporada.local +"</p>";
+                    rankingHTML += "<p>" +Temporada.temporada +"</p>";
+                    rankingHTML += "<img src=\"" +Temporada.icone +"\">";
+                    rankingHTML += "</div>";
+                });
+
+                tabRanking.innerHTML = rankingHTML;
+                document.getElementById("Titulos").querySelectorAll("p")[0].innerText = "PONTUAÇÃO";
+                document.getElementById("Titulos").querySelectorAll("p")[2].innerText = "TEMPORADA";
+            }
+        }
+
+        var Ranking = new RankingList();
+        
+        function gerarPontos(rank) {
+            // Rank 5 sempre tem 20.000 pontos
+            if (rank === 5) return 20000;
+
+            // Se o rank for menor que 5, gera uma pontuação maior conforme o rank
+            if (rank < 5) return Math.floor(40000 - (rank - 1) * 5000); // Rank 1: 40.000, Rank 2: 35.000, etc.
+
+            // Se o rank for maior que 5, gera uma pontuação que diminui conforme o rank aumenta
+            // Quanto maior o rank, menor os pontos
+            return Math.floor(20000 - (rank - 5) * 1000); // Rank 6: 19.000, Rank 7: 18.000, etc.
+        }
+
+        // Funcao para gerar o ranking local.
+        function gerarRankingLocal(){
+            Ranking.ListaLocal = [];
+            for(let i = 1; i <= 10; i++){
+                if(i == 5) Ranking.adicionarRankingLocal(i, "Ilha do Caranguejo", gerarPontos(i), "imagens/perfil-02.png");
+                else Ranking.adicionarRankingLocal(i, "Ilha do Caranguejo", gerarPontos(i));
+            }
+        }
+
+        // Funcao para gerar o ranking global.
+        function gerarRankingGlobal(){
+            Ranking.ListaGlobal = [];
+            for(let i = 1; i <= 3; i++){
+                let Pontos = Math.floor(5000 + Math.random() * (20000 - 5000));
+                Ranking.adicionarRankingGlobal(Pontos, "Ilha do Caranguejo", i, "imagens/perfil-02.png");
+            }
+        }
+
+        
+        // Funcao para alternar entre os tabs do TabBar.
+        function alternarTab(Index) {
+            let botaoTab = document.querySelectorAll("#ranking button");                    // Seleciona todos os botoes de tab.
+            let articleTab = document.querySelectorAll("#ranking article:not(#Titulos)");   // Seleciona todos as tabs.
+
+            // Verifica se o índice clicado eh o mesmo do indice ativo.
+            let tabAtivo = document.querySelector("#ranking button.tabAtivo");
+            // Se o indice clicado ja for o indice ativo, nao faz nada
+            if(tabAtivo && Array.from(botaoTab).indexOf(tabAtivo) == Index)
+                return;
+
+            botaoTab.forEach(tab => tab.classList.remove("tabAtivo"));
+            botaoTab[Index].classList.add("tabAtivo");
+
+            articleTab.forEach(section => section.style.display = "none");
+            articleTab[Index].style.display = "block";
+
+            if(Index == 0){
+                gerarRankingLocal();
+                Ranking.exibirRankingLocal();
+            }
+            else{
+                gerarRankingGlobal();
+                Ranking.exibirRankingGlobal();
+            }
+        }
+    </script>
+</body>
+</html>
