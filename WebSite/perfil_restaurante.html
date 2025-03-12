@@ -61,52 +61,35 @@
 
         main{
             margin: 30px;
-            padding: 30px;
-            display: flex;
-            min-height: 100vh;
+            padding: 3% 15%;
+            /* min-height: 100vh; */
             background: white;
             border-radius: 25px;
+            
+            section[id="Banner"]{
+                height: 350px;
+                margin-bottom: 50px;
 
-            section[id="TabBar"]{
-                width: 20%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                
-                button{
+                img{
                     width: 100%;
-                    height: 30%;
-                    padding: 5px;
-                    border: none;
-                    font-size: 80%;
-                    color: white;
-                    font-weight: 900;
+                    height: 100%;
                     border-radius: 5px;
-                    background: rgb(59,16,105);
-                }
-                button[class="TabAtivo"]{ background: rgb(1,142,66); }
-                button[class="TabAtivo"]:hover{ background: orangered; }
-                button:hover{ background: orangered; }
-                button:active, button[class="TabAtivo"]:active{
-                    background: white;
-                    color: rgb(35,151,248);
+                    border: solid rgb(59,16,105);
                 }
             }
 
-
-            section[id="InfoTab"]{
+            section[id="linkGraficos"]{
                 display: flex;
-                align-items: center;
-                flex-direction: column;
-                justify-content: center;
-                
-                article{
-                    margin: 5%;
-                    width: 30%;
+                justify-content: space-around;
 
+                article{
+                    margin: 0px 5%;
                     img{
-                        width: 100%;
+                        width: 50%;
                         border-radius: 5px;
+                    }
+                    p{
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
                     }
                 }
             }
@@ -241,6 +224,11 @@
             await esperarCliqueNoBotao();
             if(Deslogar) window.location.href = "login.html";
         }
+
+        function trocarBanner(Index = 0){
+            let imagens = ["Logotipo-icon.png", "grafico-restaurante.jpg"];
+            document.getElementById("Banner").getElementsByTagName("img")[0].src = "../Html/imagens/" +imagens[Index];
+        }
     </script>
 </head>
 <body>
@@ -248,6 +236,8 @@
         <a href="index.html"><img src="../Html/imagens/Logotipo-icon.png" alt=""></a>
         <nav>
             <a href="perfil_restaurante.html" id="Page">Meu Restaurante</a>
+            <a href="#">Análise</a>
+            <a href="#">Ferramentas</a>
             <a href="#">Configurações</a>
             <a href="#" onclick="deslogar()">Sair</a>
         </nav>
@@ -260,19 +250,21 @@
         </div>
     </aside>
     <main>
-        <section id="TabBar">
-            <button class="TabAtivo">ANÁLISE</button>
-            <button>MEUS CLIENTES</button>
-            <button>MINHAS TEMÁTICAS</button>
+        <section id="Banner">
+            <img src="../Html/imagens/banner-alerta.jpg" alt="">
         </section>
-        <section id="InfoTab">
+        <section id="linkGraficos">
             <article>
-                <img src="../Html/imagens/GameStation-02.jpg" alt="">
-                <h1>Clientes</h1>
+                <a href="#" onclick="trocarBanner(1)"><img src="../Html/imagens/icon_perfil_banner.jpg" alt=""></a>
+                <p>CLIENTES</p>
             </article>
             <article>
-                <img src="../Html/imagens/GameStation-02.jpg" alt="">
-                <h1>Minhas Temáticas</h1>
+                <a href="#" onclick="trocarBanner(1)"><img src="../Html/imagens/icon_acoes_banner.jpg" alt=""></a>
+                <p>AÇÕES</p>
+            </article>
+            <article>
+                <a href="#" onclick="trocarBanner(1)"><img src="../Html/imagens/icon_remuneracao_banner.jpg" alt=""></a>
+                <p>REMUNERAÇÃO</p>
             </article>
         </section>
     </main>
