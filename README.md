@@ -8,7 +8,7 @@ Dentro da prosposta para a **Game Station** haveria um `Aplicativo` e um `Websit
 
 Para simular nosso `Produto Final` foi desenvolvido um `Protótipo`/`Wireframe`, por meio de **HTML**, **CSS** e **JS**, demonstrando como seria o funcionamento do nosso **Aplicativo** e do nosso **Website**.
 
-<br/><br/>
+<br/>
 
 > [!NOTE]
 > **Clique no link para visualizar:**
