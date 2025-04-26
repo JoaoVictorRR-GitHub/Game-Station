@@ -1,9 +1,23 @@
+<style>
+    *{
+        text-align:justify;
+    }
+</style>
+
+
 # | PROJETO GAME STATION
 Este é um projeto desenvolvido em grupo durante a disciplina de **EMPREENDEDORISMO** na instituição de ensino **UFES** - Universidade Federal do Espírito Santo.
 
+<br>
+
 ## | APLICATIVO e WEBSITE:
-A **Game Station** conta com o protótipo/Wireframe de um aplicativo e um website desenvolvidos por meio de **HTML**, **CSS** e **JS**.
+Dentro da prosposta para a **Game Station** haveria um `Aplicativo` e um `Website`, com diferentes finalidades, que seriam utilizados por nossos grupos de `Clientes`.
 
-**Visualize o protótipo do App em:** [Game-Station/Html/index.html](https://joaovictorrr-github.github.io/Game-Station/Html/index.html)
+Para simular nosso `Produto Final` foi desenvolvido um `Protótipo`/`Wireframe`, por meio de **HTML**, **CSS** e **JS**, demonstrando como seria o funcionamento do nosso **Aplicativo** e do nosso **Website**.
 
-**Visualize o protótipo do WebSite em:** [Game-Station/WebSite/index.html](https://joaovictorrr-github.github.io/Game-Station/WebSite/index.html)
+<br>
+
+> [!NOTE]
+> **Clique no link para visualizar:**
+> - **[Protótipo do Website](https://joaovictorrr-github.github.io/Game-Station/WebSite/index.html)**
+> - **[Protótipo do Aplicativo](https://joaovictorrr-github.github.io/Game-Station/Html/index.html)**
