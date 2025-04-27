@@ -216,6 +216,23 @@
                 color: rgb(35,151,248);
             }
         }
+
+        /* RESPONSIVO MOBILE */
+        @media screen and (max-width: 650px) {
+            main{
+                padding: 3% 0;
+            }
+            aside{
+                width: 40%;
+            }
+            footer section:first-child article > nav{
+                flex-direction: column;
+                img{ width: 30%; }
+            }
+        }
+        @media screen and (min-height: 1000px) and (min-width: 650px) {
+            main{ padding: 25% 5% !important; }
+        }
     </style>
     <script>
         // Funcao para exibir uma mensagem na tela.

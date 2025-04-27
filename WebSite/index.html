@@ -109,7 +109,7 @@
 
                 div{
                     display: flex;
-                    justify-content: space-evenly;
+                    justify-content: center;
                 }
 
                 article{
@@ -169,6 +169,38 @@
                     a:hover{ color: black; }
                     a:active{ color: rgb(59,16,105); }
                 }
+            }
+        }
+
+        /* RESPONSIVO MOBILE */
+        @media screen and (max-width: 1000px) {
+            section[id="Artigos"]{
+                align-items: center;
+                flex-direction: column;
+
+                article{
+                    max-width: 60% !important;
+                    margin-top: 30px !important;
+                    img{ width: 25% !important; }
+                }
+            }
+        }
+        @media screen and (max-width: 650px) {
+            main{
+                padding: 3% 0;
+            }
+            section[id="Artigos"] article{
+                max-width: 70% !important;
+            }
+            footer section:first-child article > nav{
+                flex-direction: column;
+                img{ width: 30%; }
+            }
+        }
+        @media screen and (max-width: 550px) {
+            section[id="Planos"] div{
+                flex-direction: column;
+                article{ margin-top: 30px; }
             }
         }
     </style>

@@ -187,6 +187,29 @@
                 }
             }
         }
+
+        /* RESPONSIVO MOBILE */
+        @media screen and (max-width: 1000px) {
+            main{ padding: 5%; }
+        }
+        @media screen and (min-height: 950px) and (min-width: 650px) {
+            main{ padding: 25% 10% !important; }
+        }
+        @media screen and (max-width: 650px) {
+            section[id="Banner"]{
+                height: 150px !important;
+            }
+            section[id="linkGraficos"] p{
+                font-size: 8pt;
+            }
+            aside{
+                width: 40%;
+            }
+            footer section:first-child article > nav{
+                flex-direction: column;
+                img{ width: 30%; }
+            }
+        }
     </style>
     <script>
         var Deslogar = false;
