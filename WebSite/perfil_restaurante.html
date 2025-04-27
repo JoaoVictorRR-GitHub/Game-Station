@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prótotipo - Game Station</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-size: 12pt;
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-image: url("../Html/imagens/Fundo_Pop.png");
+
+            h1{
+                color: rgb(59,16,105);
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+        }
+
+        header{
+            display: flex;
+            overflow: hidden;
+            padding: 15px 5%;
+            align-items: center;
+            justify-content: space-between;
+
+            font-weight: 900;
+            font-size: larger;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            background-size: cover;
+            background-position: center;
+            background-image: url("../Html/imagens/Fundo.jpg");
+
+            nav {
+                a {
+                    margin: 0 10px;
+                    text-decoration: none;
+                    color: rgb(59,16,105);
+                }
+                a[id="Page"]{
+                    padding: 15px;
+                    color: white;
+                    border-radius: 10px;
+                    background: rgba(148, 0, 211, 0.497);
+                }
+                a:hover{ color: white; }
+                a[id="Page"]:hover{ color: rgb(35,151,248); }
+                a:active, a[id="Page"]:active{ color: rgba(148, 0, 211, 0.497); }
+            }
+        }
+
+        main{
+            margin: 30px;
+            padding: 3% 15%;
+            /* min-height: 100vh; */
+            background: white;
+            border-radius: 25px;
+            
+            section[id="Banner"]{
+                height: 350px;
+                margin-bottom: 50px;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 5px;
+                    border: solid rgb(59,16,105);
+                }
+            }
+
+            section[id="linkGraficos"]{
+                display: flex;
+                justify-content: space-around;
+
+                article{
+                    margin: 0px 5%;
+                    img{
+                        width: 50%;
+                        border-radius: 5px;
+                    }
+                    p{
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                    }
+                }
+            }
+        }
+
+        footer{
+            margin-top: auto;
+            display: flex;
+            font-size: large;
+            padding: 15px 30px;
+            flex-direction: column;
+            background: gainsboro;  /* blanchedalmond; */
+
+            section{
+                display: flex;
+                margin-bottom: 25px;
+                justify-content: space-evenly;
+
+                article{
+                    max-width: 25%;
+
+                    nav{
+                        display: inline-flex;
+                        img{ width: 50%; }
+                    }
+                }
+
+                > nav{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-evenly;
+
+                    a{
+                        width: 25%;
+                        text-decoration: none;
+                        color: rgb(35,151,248);
+                    }
+                    a:hover{ color: black; }
+                    a:active{ color: rgb(59,16,105); }
+                }
+            }
+        }
+
+        aside{
+            top: 40%;
+            left: 50%;
+            width: 20%;
+            height: 18%;
+            position: absolute;
+            transform: translate(-50%, -50%);   /* Ajusta para centralizar. */
+            border-radius: 15px;
+            border: 2px solid rgb(59,16,105);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+            background: rgba(148, 0, 211, 0.497);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("../Html/imagens/perfil-02.png");
+
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            visibility: hidden;
+            z-index: 1;
+
+            p{
+                margin-top: 40%;
+                font-weight: bold;
+                word-wrap: break-word;
+            }
+
+            div{
+                display: flex;
+                justify-content: center;
+
+                button{
+                    width: 100%;
+                    padding: 5px;
+                    margin: 0 3%;
+                    font-size: 8pt;
+                    color: white;
+                    font-weight: 900;
+                    border-radius: 5px;
+                    background: rgb(59,16,105);
+                }
+                button:nth-child(2){ background: red; }
+                button:nth-child(2):hover{ background: orangered; }
+                button:hover{ background: rgb(1,142,66); }
+                button:active, button:nth-child(2):active{
+                    background: white;
+                    color: rgb(35,151,248);
+                }
+            }
+        }
+
+        /* RESPONSIVO MOBILE */
+        @media screen and (max-width: 1000px) {
+            main{ padding: 5%; }
+        }
+        @media screen and (min-height: 950px) and (min-width: 650px) {
+            main{ padding: 25% 10% !important; }
+        }
+        @media screen and (max-width: 650px) {
+            section[id="Banner"]{
+                height: 150px !important;
+            }
+            section[id="linkGraficos"] p{
+                font-size: 8pt;
+            }
+            aside{
+                width: 40%;
+            }
+            footer section:first-child article > nav{
+                flex-direction: column;
+                img{ width: 30%; }
+            }
+        }
+    </style>
+    <script>
+        var Deslogar = false;
+        
+        // Funcao para exibir uma mensagem na tela.
+        function exibirMensagem(Mensagem = "Mensagem", Exibir = true){
+            document.getElementsByTagName("header")[0].style.pointerEvents  = Exibir ? "none" : "";     /* Bloqueia/Desbloqueia cliques e interacoes no header. */
+            document.getElementsByTagName("main")[0].style.pointerEvents    = Exibir ? "none" : "";     /* Bloqueia/Desbloqueia cliques e interacoes na main. */
+            document.getElementsByTagName("main")[0].style.opacity          = Exibir ? "0.8" : "";      /* Desfoca/Foca o fundo na main. */
+            document.getElementsByTagName("footer")[0].style.pointerEvents  = Exibir ? "none" : "";     /* Bloqueia/Desbloqueia cliques e interacoes no footer. */
+
+            document.getElementById("mensagem").getElementsByTagName("p")[0].innerHTML = Mensagem;
+            document.getElementById("mensagem").style.visibility = Exibir ? "visible" : "hidden";
+        }
+
+        // Funcao para aguardar o click no botao do aside de mensagem.
+        function esperarCliqueNoBotao(){
+            return new Promise(resolve => {
+                let botoes = document.getElementById("mensagem").getElementsByTagName("button");
+                botoes[0].addEventListener("click", () => {
+                    exibirMensagem("", false);      // Esconde o aside.
+                    Deslogar = true;
+                    resolve();                      // Libera o fluxo de execucao.
+                }, { once: true });                 // Garante que o evento so seja acionado uma vez.
+
+               botoes[1].addEventListener("click", () => {
+                    exibirMensagem("", false);      // Esconde o aside.
+                    resolve();                      // Libera o fluxo de execucao.
+                }, { once: true });                 // Garante que o evento so seja acionado uma vez.
+            });
+        }
+
+        async function deslogar(){
+            exibirMensagem("Você será deslogado!");
+            await esperarCliqueNoBotao();
+            if(Deslogar) window.location.href = "login.html";
+        }
+
+        function trocarBanner(Index = 0){
+            let imagens = ["Logotipo-icon.png", "grafico-restaurante.jpg"];
+            document.getElementById("Banner").getElementsByTagName("img")[0].src = "../Html/imagens/" +imagens[Index];
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="../Html/imagens/Logotipo-icon.png" alt=""></a>
+        <nav>
+            <a href="perfil_restaurante.html" id="Page">Meu Restaurante</a>
+            <a href="#">Análise</a>
+            <a href="#">Ferramentas</a>
+            <a href="#">Configurações</a>
+            <a href="#" onclick="deslogar()">Sair</a>
+        </nav>
+    </header>
+    <aside id="mensagem">
+        <p>Mensagem</p>
+        <div>
+            <button onclick="exibirMensagem('', false)"> CONFIRMAR </button>
+            <button onclick="exibirMensagem('', false)"> CANCELAR </button>
+        </div>
+    </aside>
+    <main>
+        <section id="Banner">
+            <img src="../Html/imagens/banner-alerta.jpg" alt="">
+        </section>
+        <section id="linkGraficos">
+            <article>
+                <a href="#" onclick="trocarBanner(1)"><img src="../Html/imagens/icon_perfil_banner.jpg" alt=""></a>
+                <p>CLIENTES</p>
+            </article>
+            <article>
+                <a href="#" onclick="trocarBanner(1)"><img src="../Html/imagens/icon_acoes_banner.jpg" alt=""></a>
+                <p>AÇÕES</p>
+            </article>
+            <article>
+                <a href="#" onclick="trocarBanner(1)"><img src="../Html/imagens/icon_remuneracao_banner.jpg" alt=""></a>
+                <p>REMUNERAÇÃO</p>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <section>
+            <article>
+                <h1>CONTATOS</h1>
+                <nav>
+                    <a href="#"><img src="../Html/imagens/icon_telefone_fixo.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_whatsapp.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_instagram.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_telegram.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_twitter.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_gmail.png" alt=""></a>
+                </nav>
+            </article>
+            <article>
+                <h1>ENDEREÇO</h1>
+                <address> Rua da Game Station, Bairro da Game Station, Nº 001, CEP - 00000-000/ES. </address>
+            </article>
+        </section>
+        <section>
+            <nav>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Serviço</a>
+            </nav>
+        </section>
+        <p>copyright &#169; Game Station - <b>Todos os Direitos Reservados</b></p>
+    </footer>
+</body>
+</html>

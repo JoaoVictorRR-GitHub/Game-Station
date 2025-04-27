@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prótotipo - Game Station</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-size: 12pt;
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-image: url("../Html/imagens/Fundo_Pop.png");
+
+            h1{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        }
+
+        header{
+            display: flex;
+            overflow: hidden;
+            padding: 15px 5%;
+            align-items: center;
+            justify-content: space-between;
+
+            font-weight: 900;
+            font-size: larger;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            background-size: cover;
+            background-position: center;
+            background-image: url("../Html/imagens/Fundo.jpg");
+
+            nav {
+                a {
+                    margin: 0 10px;
+                    text-decoration: none;
+                    color: rgb(59,16,105);
+                }
+                a[id="Page"]{
+                    padding: 15px;
+                    color: white;
+                    border-radius: 10px;
+                    background: rgba(148, 0, 211, 0.497);
+                }
+                a:hover{ color: white; }
+                a[id="Page"]:hover{ color: rgb(35,151,248); }
+                a:active, a[id="Page"]:active{ color: rgba(148, 0, 211, 0.497); }
+            }
+        }
+
+        main{
+            margin: 30px;
+            padding: 3% 5%;
+            min-height: 100vh;
+            background: white;
+            border-radius: 25px;
+
+            section{
+                padding: 0 20%;
+                font-size: 20pt;
+                margin-bottom: 100px;
+
+                h1{ color: rgb(59,16,105); }
+                p{
+                    line-height: 1.5;
+                    text-align: justify;
+                }
+
+                article[class="Equipe"]{
+                    display: flex;
+                    margin-bottom: 25px;
+                    justify-content: center;
+
+                    div{ margin: 0 20px; }
+                    img{
+                        width: 65%;
+                        padding: 15px;
+                        border-radius: 20px;
+                        background-color: rgba(148, 0, 211, 0.497);
+                    }
+                    p{
+                        margin: 0;
+                        text-align: center;
+                        font-family: 'Courier New', Courier, monospace;
+                    }
+                }
+            }
+        }
+
+        footer{
+            margin-top: auto;
+            display: flex;
+            font-size: large;
+            padding: 15px 30px;
+            flex-direction: column;
+            background: gainsboro;  /* blanchedalmond; */
+
+            section{
+                display: flex;
+                margin-bottom: 25px;
+                justify-content: space-evenly;
+
+                article{
+                    max-width: 25%;
+
+                    nav{
+                        display: inline-flex;
+                        img{ width: 50%; }
+                    }
+                }
+
+                > nav{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-evenly;
+
+                    a{
+                        width: 25%;
+                        text-decoration: none;
+                        color: rgb(35,151,248);
+                    }
+                    a:hover{ color: black; }
+                    a:active{ color: rgb(59,16,105); }
+                }
+            }
+        }
+
+        /* RESPONSIVO MOBILE */
+        @media screen and (max-width: 650px) {
+            main{
+                padding: 3% 0;
+            }
+            footer section:first-child article > nav{
+                flex-direction: column;
+                img{ width: 30%; }
+            }
+        }
+    </style>
+    <script>
+        var max = 4;
+        var i = 0, j = max-1;
+        var cores = ["rgb(59,16,105)", "rgb(1,142,66)", "rgb(35,151,248)"];
+
+        function alternarCorEquipe(){
+            let articleEquipe = document.querySelectorAll("article.Equipe");
+            let iconesEquipe01 = articleEquipe[0].querySelectorAll("img");
+            let iconesEquipe02 = articleEquipe[1].querySelectorAll("img");
+
+            let Cor1 = Math.floor(Math.random() * cores.length);
+            let Cor2 = Math.floor(Math.random() * cores.length);
+            
+            if(i != 0) iconesEquipe01[i-1].style.background = "";
+            else iconesEquipe01[j].style.background = "";
+            if(j != (max-1)) iconesEquipe02[j+1].style.background = "";
+            else iconesEquipe02[i].style.background = "";
+
+            iconesEquipe01[i++].style.background = cores[Cor1];
+            iconesEquipe02[j--].style.background = cores[Cor2];
+
+            if(i == max) i = 0;
+            if(j < 0) j = max-1;
+        }
+
+        setInterval(alternarCorEquipe, 3000);
+    </script>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="../Html/imagens/Logotipo-icon.png" alt=""></a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#" id="Page">Sobre Nós</a>
+            <a href="#">Cases de Sucesso</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>A GAME <span style="color: rgb(35,151,248);">STATION</span></h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias sed repudiandae
+                vel pariatur nulla officia voluptatem nihil. Sed, nesciunt consequuntur. Sit
+                nobis possimus quasi ipsam libero tempora aut quo temporibus.
+            </p>
+            <p>
+                Laborum sed error consequatur ad et vel dolor repellat totam! Soluta tempore fuga
+                possimus laborum eos repellat iure ducimus nam eius, molestiae, doloremque temporibus
+                ad expedita nihil tempora quasi dicta.
+            </p>
+        </section>
+        <section>
+            <h1>A <span style="color: rgb(35,151,248);">NOSSA</span> PROPOSTA</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quas maxime
+                amet aut distinctio illo, ipsam dolore illum perspiciatis repellendus vitae
+                possimus culpa, tenetur dolor alias? Impedit commodi ab eos.
+            </p>
+        </section>
+        <section>
+            <h1>A <span style="color: rgb(35,151,248);">EQUIPE</span></h1>
+            <article class="Equipe">
+                <div>
+                    <img src="../Html/imagens/perfil-02.png" alt="">
+                    <p> A.</p>
+                </div>
+                <div>
+                    <img src="../Html/imagens/perfil-02.png" alt="">
+                    <p>A. B.</p>
+                </div>
+                <div>
+                    <img src="../Html/imagens/perfil-02.png" alt="">
+                    <p>A. L.</p>
+                </div>
+                <div>
+                    <img src="../Html/imagens/perfil-02.png" alt="">
+                    <p>I.</p>
+                </div>
+            </article>
+            <article class="Equipe">
+                <div>
+                    <img src="../Html/imagens/perfil-02.png" alt="">
+                    <p>J. V.</p>
+                </div>
+                <div>
+                    <img src="../Html/imagens/perfil-02.png" alt="">
+                    <p>L. R.</p>
+                </div>
+                <div>
+                    <img src="../Html/imagens/perfil-02.png" alt="">
+                    <p>N.</p>
+                </div>
+                <div>
+                    <img src="../Html/imagens/perfil-02.png" alt="">
+                    <p>S.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <section>
+            <article>
+                <h1>CONTATOS</h1>
+                <nav>
+                    <a href="#"><img src="../Html/imagens/icon_telefone_fixo.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_whatsapp.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_instagram.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_telegram.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_twitter.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_gmail.png" alt=""></a>
+                </nav>
+            </article>
+            <article>
+                <h1>ENDEREÇO</h1>
+                <address> Rua da Game Station, Bairro da Game Station, Nº 001, CEP - 00000-000/ES. </address>
+            </article>
+        </section>
+        <section>
+            <nav>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Serviço</a>
+            </nav>
+        </section>
+        <p>copyright &#169; Game Station - <b>Todos os Direitos Reservados</b></p>
+    </footer>
+</body>
+</html>

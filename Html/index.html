@@ -6,55 +6,104 @@
     <title>Prótotipo - Game Station</title>
 
     <style>
-        body{
-            width: 300px;
-            height: 600px;
-            margin: 7% auto;
-            border: 3px solid;
+        body {
+            display: flex;
+            flex-direction: column;
             padding: 10px 5px;
-            border-radius: 10px;
-            background-color: gainsboro;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-            > div{
-                border: 3px solid;
-                border-radius: 6px;
+            div.celular {
+                width: 412px;
+                height: 915px;
+                overflow: hidden;
+                border: 10px solid;
+                border-radius: 30px;
+                background-color: gainsboro;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
             }
         }
 
         main{
-            height: 240px;
             display: flex;
-            padding: 60% 10%;
-            align-items: center;
             flex-direction: column;
-            background: linear-gradient(45deg, #ff0000ad, #0000ff8d);
-        }
-
-        img{
-            border: 3px solid;
-            margin-bottom: 50px;
-            border-radius: 30px;
-            border-color: red;
-            animation: borderAnimation 15s infinite alternate;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-image: url("imagens/Logotipo.jpg");
+            /* background: linear-gradient(45deg, #ff0000ad, #0000ff8d); */
         }
 
         /* Animacao para mudar as cores do degrade. */
-        @keyframes borderAnimation {
+        /* @keyframes borderAnimation {
             0% { border-color: #0000ff; }
             25% { border-color: #00ff00; }
             50% { border-color: #ff00ff; }
             100% { border-color: #ff0000; }
-        }
+        } */
 
         a{
+            display: flex;
+            margin-top: 135%;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
             color: gainsboro;
             letter-spacing: 3px;
             text-decoration: none;
-            text-shadow: 1px 1px 1px teal;
+            text-shadow: 1px 1px 1px rgb(59,16,105);
+
+            div[id="Loading"]{
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                border: 2px solid gainsboro;
+                border-top: 2px solid rgb(35,151,248);
+                animation: spin 1.2s linear infinite, borderColor 9.6s alternate infinite;   /* Animacao de rotacao. */
+            }
         }
-        a:hover{ color: burlywood; }
-        a:active{ color: #00ff00; }
+        a:hover{ color: rgb(59,16,105); }
+        a:active{ color: rgb(35,151,248); }
+
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes borderColor {
+            0% {
+                border-color: gainsboro;
+                border-top-color: rgb(35,151,248);
+            }
+            25% {
+                border-color: rgb(35,151,248);
+                border-top-color: gainsboro;
+            }
+            50% {
+                border-color: gainsboro;
+                border-top-color: rgb(59,16,105);
+            }
+            100% {
+                border-color: rgb(59,16,105);
+                border-top-color: gainsboro;
+            }
+        }
+        
+        /* RESPONSIVO MOBILE */
+        @media screen and (max-width: 415px) {
+            div.celular {
+                width: 280px !important;
+                height: 620px !important;
+            }
+        }
+        @media screen and (min-height: 950px) {
+            div.celular {
+                height: 620px !important;
+            }
+        }
     </style>
     <script>
         setTimeout((Event) => {
@@ -63,12 +112,14 @@
     </script>
 </head>
 <body>
-    <div>
+    <div class="celular">
         <header>
         </header>
         <main>
-            <img src="imagens/GameStation.jpg" alt="Logotipo" width="50%">
-            <a href="home.html">CARREGANDO...</a>
+            <a href="home.html">
+                CARREGANDO...
+                <div id="Loading"></div>
+            </a>
         </main>
         <footer>
         </footer>

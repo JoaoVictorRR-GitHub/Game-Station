@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prótotipo - Game Station</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-size: 12pt;
+            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-image: url("../Html/imagens/Fundo_Pop.png");
+
+            h1, h2{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        }
+
+        header{
+            display: flex;
+            overflow: hidden;
+            padding: 15px 5%;
+            align-items: center;
+            justify-content: space-between;
+
+            font-weight: 900;
+            font-size: larger;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            background-size: cover;
+            background-position: center;
+            background-image: url("../Html/imagens/Fundo.jpg");
+
+            nav {
+                a {
+                    margin: 0 10px;
+                    text-decoration: none;
+                    color: rgb(59,16,105);
+                }
+                a[id="Page"]{
+                    padding: 15px;
+                    color: white;
+                    border-radius: 10px;
+                    background: rgba(148, 0, 211, 0.497);
+                }
+                a:hover{ color: white; }
+                a[id="Page"]:hover{ color: rgb(35,151,248); }
+                a:active, a[id="Page"]:active{ color: rgba(148, 0, 211, 0.497); }
+            }
+        }
+
+        main{
+            margin: 30px;
+            padding: 3% 10%;
+            min-height: 100vh;
+            background: white;
+            border-radius: 25px;
+
+            section[id="Artigos"]{
+                display: flex;
+                justify-content: space-between;
+
+                article {
+                    padding: 15px;
+                    margin: 0 30px;
+                    /* min-width: 20%; */
+                    max-width: 33%;
+                    overflow: hidden;
+                    border-radius: 5px;
+                    border: 1px solid rgb(59,16,105);
+
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    img{ width: 50%; border-radius: 15px; }
+                    p{ text-align: justify; }
+                    a{
+                        padding: 15px;
+                        color: white;
+                        font-weight: 900;
+                        border-radius: 10px;
+                        text-decoration: none;
+                        border: 1px solid rgb(59,16,105);
+                        font-family: Verdana, Geneva, Tahoma, sans-serif;
+                    }
+                    a:hover{
+                        color: gainsboro;
+                        background: rgb(59,16,105) !important;
+                    }
+                    a:active{
+                        color: rgb(59,16,105);
+                        background: gainsboro  !important;
+                    }
+                }
+            }
+
+            section[id="Planos"]{
+                margin: 0 15%;
+                margin-top: 100px;
+
+                div{
+                    display: flex;
+                    justify-content: center;
+                }
+
+                article{
+                    padding: 15px;
+                    margin: 0 30px;
+                    border: 1px solid;
+                    border-radius: 5px;
+                    font-family: fantasy;
+                }
+
+                h1{
+                    margin-bottom: 20px;
+                    color:  rgb(1,142,66);
+                }
+                h2{
+                    padding: 15px;
+                    margin-top: 20px;
+                    border: 1px solid;
+                    border-radius: 5px;
+                    color: rgb(35,151,248);
+                }
+            }
+        }
+
+        footer{
+            margin-top: auto;
+            display: flex;
+            font-size: large;
+            padding: 15px 30px;
+            flex-direction: column;
+            background: gainsboro;  /* blanchedalmond; */
+
+            section{
+                display: flex;
+                margin-bottom: 25px;
+                justify-content: space-evenly;
+
+                article{
+                    max-width: 25%;
+
+                    nav{
+                        display: inline-flex;
+                        img{ width: 50%; }
+                    }
+                }
+
+                > nav{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-evenly;
+
+                    a{
+                        width: 25%;
+                        text-decoration: none;
+                        color: rgb(35,151,248);
+                    }
+                    a:hover{ color: black; }
+                    a:active{ color: rgb(59,16,105); }
+                }
+            }
+        }
+
+        /* RESPONSIVO MOBILE */
+        @media screen and (max-width: 1000px) {
+            section[id="Artigos"]{
+                align-items: center;
+                flex-direction: column;
+
+                article{
+                    max-width: 60% !important;
+                    margin-top: 30px !important;
+                    img{ width: 25% !important; }
+                }
+            }
+        }
+        @media screen and (max-width: 650px) {
+            main{
+                padding: 3% 0;
+            }
+            section[id="Artigos"] article{
+                max-width: 70% !important;
+            }
+            footer section:first-child article > nav{
+                flex-direction: column;
+                img{ width: 30%; }
+            }
+        }
+        @media screen and (max-width: 550px) {
+            section[id="Planos"] div{
+                flex-direction: column;
+                article{ margin-top: 30px; }
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="../Html/imagens/Logotipo-icon.png" alt=""></a>
+        <nav>
+            <a href="#" id="Page">Home</a>
+            <a href="sobre.html">Sobre Nós</a>
+            <a href="#">Cases de Sucesso</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <main>
+        <section id="Artigos">
+            <article>
+                <img src="../Html/imagens/icon_mapa_da_cidade.png" alt="">
+                <div>
+                    <h1>ENCONTRE <span style="color: rgb(35,151,248);"> STATIONS </span> PELA CIDADE</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis nemo ducimus suscipit,
+                        inventore iusto fugiat nam porro molestias eligendi at voluptatem autem dolore expedita
+                        accusantium, doloremque ipsum itaque aperiam illo.
+                    </p>
+                </div>
+                <a href="#" style="background: rgb(35,151,248);">INCLUIR MEU RESTAURANTE</a>
+            </article>
+            <article>
+                <img src="../Html/imagens/restaurante-01-cooking.png" alt="">
+                <div>
+                    <h1>CONHEÇA A <span style="color: rgb(1,142,66);"> CULINÁRIA </span> LOCAL</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis nemo ducimus suscipit,
+                        inventore iusto fugiat nam porro molestias eligendi at voluptatem autem dolore expedita
+                        accusantium, doloremque ipsum itaque aperiam illo.
+                    </p>
+                </div>
+                <a href="#" style="background: rgb(1,142,66);">BAIXAR O APP PARA FREGUÊS</a>
+            </article>
+            <article>
+                <img src="../Html/imagens/jogo-01.png" alt="">
+                <div>
+                    <h1>JOGUE PARA ESPANTAR O <span style="color: rgba(148, 0, 211, 0.497);"> TÉDIO </span></h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis nemo ducimus suscipit, 
+                        inventore iusto fugiat nam porro molestias eligendi at voluptatem autem dolore expedita
+                        accusantium, doloremque ipsum itaque aperiam illo.
+                    </p>
+                </div>
+                <a href="#" style="background: rgba(148, 0, 211, 0.497);">CONHECER OS GAMES</a>
+            </article>
+        </section>
+        <section id="Planos">
+            <h1 style="color: rgb(59,16,105);">PLANO PARA RESTAURANTES</h1>
+            <div>
+                <article>
+                    <h1>TRIAL</h1>
+                    <p>3 Temáticas</p>
+                </article>
+                <article>
+                    <h1>START</h1>
+                    <p>6 Temáticas</p>
+                </article>
+                <article>
+                    <h1>PLUS</h1>
+                    <p>12 Temáticas</p>
+                </article>
+            </div>
+            <h2>PREMIUM</h2>
+        </section>
+    </main>
+    <footer>
+        <section>
+            <article>
+                <h1>CONTATOS</h1>
+                <nav>
+                    <a href="#"><img src="../Html/imagens/icon_telefone_fixo.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_whatsapp.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_instagram.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_telegram.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_twitter.png" alt=""></a>
+                    <a href="#"><img src="../Html/imagens/icon_gmail.png" alt=""></a>
+                </nav>
+            </article>
+            <article>
+                <h1>ENDEREÇO</h1>
+                <address> Rua da Game Station, Bairro da Game Station, Nº 001, CEP - 00000-000/ES. </address>
+            </article>
+        </section>
+        <section>
+            <nav>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Serviço</a>
+            </nav>
+        </section>
+        <p>copyright &#169; Game Station - <b>Todos os Direitos Reservados</b></p>
+    </footer>
+</body>
+</html>
